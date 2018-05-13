@@ -1,0 +1,7 @@
+﻿@model IEnumerable<web1._0.Models.TaiKhoan>
+
+@foreach(var a in Model)
+{
+    @Html.Partial("_BookInList",a)
+
+}
