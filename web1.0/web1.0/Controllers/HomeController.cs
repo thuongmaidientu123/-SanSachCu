@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using web1._0.DAO;
+using web1._0.Common;
+using web1._0.Models;
+
 namespace web1._0.Controllers
 {
     public class HomeController : Controller
@@ -11,28 +14,25 @@ namespace web1._0.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var dao = new DAO.SachDAO();
+            return View(dao.getListSaleBook());
         }
 
 
-        public PartialViewResult BookInList()
-        {
-            var dao = new Models.SanSachCu();
-            return PartialView("BooKinList",dao.TaiKhoans);
-
-
-
-            
-        }
-
-        public ActionResult BanSach()
-        {
-            return View();
-        }
 
         public ActionResult BaiTap()
         {
             return View();
         }
+
+        [ChildActionOnly]
+        public PartialViewResult HistoryTransaction()
+        {
+            SachDAO dao = new SachDAO();
+            
+            return PartialView(dao.getListHistoryTransaction());
+        }
+
+        
     }
 }

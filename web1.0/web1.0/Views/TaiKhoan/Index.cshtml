@@ -1,8 +1,43 @@
-﻿
+﻿@model web1._0.Models.LoginModel
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Template.cshtml";
 }
 
-<h2>LoGin</h2>
+<h2>Đăng nhập tài khoản của bạn</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.userName, new { htmlAttributes = new { @class = "textbox" } })
+               
+            </div>
+        </div>
+
+        <div class="form-group input-group">
+            @Html.LabelFor(model => model.passWord, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.PasswordFor(model => model.passWord, new { htmlAttributes = new { @class = "textbox" } })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng Nhập" class="btn btn-primary" />
+                <button type="button" value="" onclick="location.href='@Url.Action("DangKy","TaiKhoan")'" class="btn btn-danger">Đăng ký</button>
+            </div>
+        </div>
+    </div>
+}
+
 

@@ -16,12 +16,17 @@ namespace web1._0.Models
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TacGia> TacGias { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BaiDang>()
+                .Property(e => e.hinhanh)
+                .IsUnicode(false);
+
             modelBuilder.Entity<NhaXuatBan>()
                 .HasMany(e => e.BaiDangs)
                 .WithRequired(e => e.NhaXuatBan)
@@ -33,6 +38,10 @@ namespace web1._0.Models
                 .WithRequired(e => e.NhaXuatBan)
                 .HasForeignKey(e => e.manxb)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sach>()
+                .Property(e => e.hinhanh)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Sach>()
                 .HasMany(e => e.DonHangs)

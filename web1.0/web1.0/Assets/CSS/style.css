@@ -1,12 +1,8 @@
 body{
-	
-	
 	max-width: 1200px;
 	margin: 0 auto;
 }
-.login{
-	padding-top: 10px;
-}
+
 /*menu left */
 .submenu li{
 	padding-left:30px;
@@ -30,21 +26,7 @@ list-style-type:none;
 	
 }
 
-/*Dangky.html*/
 
-
-*[role="form"] {
-    max-width: 530px;
-    padding: 15px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 0.3em;
-}
-
-*[role="form"] h2 {
-    margin-left: 5em;
-    margin-bottom: 1em;
-}
 /*index - Minh Tri*/
 }
 .main {
@@ -69,12 +51,11 @@ list-style-type:none;
   bottom: 0;
   left: 0;
   right: 0;
-	margin:;
-  height: 317px;
-  width: 257px;
+  height: 100%;
+  width: 200px;
   opacity: 0;
   transition: .5s ease;
-  background-color: #CCC8C8;
+  background-color: antiquewhite;
 }
  
 .container_1:hover .overlay {
@@ -91,3 +72,39 @@ list-style-type:none;
   transform: translate(-50%, -50%);
   -ms-transform: translate(50%, 50%);
 }
+
+/*BookInlist Nhan*/
+
+.BookinList {
+
+    margin-bottom:10px;
+    padding:5px;
+    width: 100%;
+    min-height: 200px;
+    background-color: gainsboro;
+    border-radius:5px;
+}
+.Image { 
+    display:inline-block;
+    position:relative;
+}
+.Image img {
+    width: 257px;
+    height: 317px;
+}
+.Info{
+    display:inline-block;
+    width:50%;
+}
+
+.Intro {
+    
+}
+
+/* menu */
+.menu{
+    margin-bottom:30px;
+    border-radius:5px;
+}
+
+

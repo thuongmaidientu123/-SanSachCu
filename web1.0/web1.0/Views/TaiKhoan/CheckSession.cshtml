@@ -1,0 +1,11 @@
+﻿@model web1._0.Models.UserLogin
+
+@if (Model == null)
+{
+    <li class="nav-item">  @Html.ActionLink("Đăng nhập", "Index", "TaiKhoan", null, new { @class = "nav-link" })</li>
+    <li class="nav-item">  @Html.ActionLink("Đăng ký", "DangKy", "TaiKhoan", null, new { @class = "nav-link" }) </li>
+}
+else
+{
+       <span>Xin chào  @Model.UserName @Html.ActionLink("Đăng xuất", "Logout", "TaiKhoan") </span>
+}

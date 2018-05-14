@@ -43,6 +43,9 @@ namespace web1._0.Models
 
         public int matheloai { get; set; }
 
+        [StringLength(50)]
+        public string hinhanh { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
 

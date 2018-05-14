@@ -1,10 +1,42 @@
-﻿@model web1._0.Models.TaiKhoan
+﻿@model web1._0.Models.Sach
 
 
-<div>
-    <li>@Model.ma</li>
-    <li>@Model.tendangnhap</li>
-    <li>@Model.matkhau</li>
+
+<div class="BookinList">
+    <div class="Image">
+        <img class="img-thumbnail" src="@Model.hinhanh" />
+    </div>
+    <div class="Info">
+        <h3>@Model.ten</h3>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <td><b>Tác giả:</b></td>
+                <td>@Model.TacGia.tentacgia</td>
+            </tr>
+            <tr>
+                <td><b>Nhà xuất bản:</b></td>
+                <td>@Model.NhaXuatBan.tennhaxuatban</td>
+            </tr>
+            <tr>
+                <td><b>Thể loại:</b></td>
+                <td>@Model.TheLoai.tenloaisach</td>
+            </tr>
+
+            <tr>
+                <td><b>Giá: </b></td>
+                <td>@Model.gia đ</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="btn-primary" type="button" onclick="location.href='@Url.Action("Index","Home")'">Đặt mua</button></td>
+            </tr>
+            @Model.ngaydang
+        </table>
+       
+    </div>
+    
 
 </div>
 

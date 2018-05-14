@@ -4,5 +4,15 @@
     Layout = "~/Views/Shared/_Template.cshtml";
 }
 
-<h2>Index</h2>
+@model IEnumerable<web1._0.Models.Sach>
+
+
+@foreach (var a in Model)
+    {
+    @Html.Partial("_BookInList", a)
+
+    }
+
+
+
 

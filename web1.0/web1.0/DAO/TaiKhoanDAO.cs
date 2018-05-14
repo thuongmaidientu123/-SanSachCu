@@ -15,27 +15,39 @@ namespace web1._0.DAO
         }
 
 
-        public int Insert(TaiKhoan entity)
+        public Boolean Insert(TaiKhoan entity)
         {
             db.TaiKhoans.Add(entity);
-            int temp = entity.ma;
+            Boolean temp = true;
             try
             {
                 db.SaveChanges();
             }
             catch(Exception ex)
             {
-                temp = -1;
+                temp = false;
             }
 
             return temp;
         }
 
-        public List<TaiKhoan> getListTaiKhoan()
+        public TaiKhoan getByUserName(string UserName)
         {
-            List<TaiKhoan> listtaikhoan = db.TaiKhoans.ToList();
+            return db.TaiKhoans.SingleOrDefault(a => a.tendangnhap == UserName);
+            
+        }
 
-            return listtaikhoan;
+        public Boolean CheckLogin(string userName,string passWord)
+        {
+            var a = db.TaiKhoans.Count(x => x.tendangnhap == userName && x.tendangnhap == passWord);
+            if (a > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         
     }

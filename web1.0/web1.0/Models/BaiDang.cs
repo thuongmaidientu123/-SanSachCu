@@ -39,6 +39,9 @@ namespace web1._0.Models
 
         public int mataikhoan { get; set; }
 
+        [StringLength(50)]
+        public string hinhanh { get; set; }
+
         public virtual NhaXuatBan NhaXuatBan { get; set; }
 
         public virtual TacGia TacGia { get; set; }
