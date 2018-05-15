@@ -7,11 +7,13 @@
 @model IEnumerable<web1._0.Models.Sach>
 
 
-@foreach (var a in Model)
-    {
-    @Html.Partial("_BookInList", a)
+@for(int i=0;i< ViewBag.NumberBookShow;i++)
+{
+    @Html.Partial("_BookInList", Model.ElementAt(i))
 
     }
+
+<button type="button" value="" onclick="location.href='@Url.Action("pushBook","Home")'" class="btn btn-danger">Đăng ký</button>
 
 
 

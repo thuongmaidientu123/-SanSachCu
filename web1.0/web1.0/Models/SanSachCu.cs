@@ -8,7 +8,7 @@ namespace web1._0.Models
     public partial class SanSachCu : DbContext
     {
         public SanSachCu()
-            : base("name=SanSachCu1")
+            : base("name=SanSachCu2")
         {
         }
 

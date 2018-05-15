@@ -14,6 +14,7 @@ namespace web1._0.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.NumberBookShow = 3;
             var dao = new DAO.SachDAO();
             return View(dao.getListSaleBook());
         }
@@ -25,13 +26,20 @@ namespace web1._0.Controllers
             return View();
         }
 
-        [ChildActionOnly]
+        
         public PartialViewResult HistoryTransaction()
         {
             SachDAO dao = new SachDAO();
             
             return PartialView(dao.getListHistoryTransaction());
         }
+        
+        
+        public ViewResult pushBook()
+        {
+            return View("index");
+        }
+
 
         
     }

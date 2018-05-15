@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<web1._0.Models.Sach>
 
-@for(int i=0;i<2;i++)
+@for(int i=0;i<3;i++)
 {
-    <li class="list-group-item">Sách <b style="color:limegreen">@Model.ElementAt(i).ten</b> giá <b style="color:limegreen">@Model.ElementAt(i).gia</b> đã bán lúc <b style="color:limegreen">@Model.ElementAt(i).giodang</b> </li>
+    <li class="list-group-item">Sách <b style="color:limegreen">@Model.ElementAt(i).ten</b> giá <b style="color:limegreen">@Model.ElementAt(i).gia</b> đã bán lúc <b style="color:limegreen"> @Model.ElementAt(i).ngaydang </b> </li>
 
 }
 
