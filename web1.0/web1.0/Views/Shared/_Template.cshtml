@@ -29,17 +29,9 @@
     <link href="~/Assets/CSS/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="row justify-content-between font-weight-bold border menu">
-                <ul class="nav">
+    <div class="container"> 
                     <!--{Html.RenderAction("CheckSession", "TaiKhoan");}-->
-                    @Html.Action("CheckSession", "TaiKhoan")
-                </ul>
-
-            </div>
-
-        </div>
+                    @Html.Action("CheckSession", "TaiKhoan") 
         <div class="row">
             <div class="col-4 justify-content-between"></div>
             <div class="col-4"><img src='~/Assets/images/logo.png' class="img-fluid" alt="Placeholder image"></div>
@@ -61,14 +53,12 @@
                 <div class="panel panel-info">
                     <div class="panel-heading">Danh Mục</div>
                     <div class="list-group">
-
                         @Html.ActionLink("Sách Văn Học - Tiếu Thuyết", "", "", null, new { @class = "list-group-item" })
                         @Html.ActionLink("Sách Thiếu Nhi", "", "", null, new { @class = "list-group-item" })
                         @Html.ActionLink("Sách Kinh Tế", "", "", null, new { @class = "list-group-item" })
                         @Html.ActionLink("Sách Kỹ Năng Sống", "", "", null, new { @class = "list-group-item" })
                         @Html.ActionLink("Sách Học Ngoại Ngữ", "", "", null, new { @class = "list-group-item" })
                         @Html.ActionLink("Sách Tham Khảo", "", "", null, new { @class = "list-group-item" })
-
 
                     </div>
                 </div>
@@ -83,6 +73,7 @@
             </div>
 
             <div class="col-6">
+
                 @RenderBody()
 
             </div>    
