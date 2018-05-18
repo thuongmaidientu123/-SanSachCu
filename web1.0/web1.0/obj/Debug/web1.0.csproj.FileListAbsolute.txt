@@ -143,11 +143,11 @@ C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\System.Web.Webpages.D
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\System.Web.Webpages.Razor.xml
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\System.Web.Helpers.xml
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\System.Web.Mvc.xml
-C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.csprojResolveAssemblyReference.cache
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.csproj.CoreCompileInputs.cache
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.csproj.CopyComplete
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.dll
 C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.pdb
+<<<<<<< HEAD
 C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\web1.0.dll.config
 C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\web1.0.dll
 C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\web1.0.pdb
@@ -221,3 +221,6 @@ C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\bin\System.Web.Mvc.xml
 C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.dll
 C:\Users\Admin\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.pdb
+=======
+C:\Users\Nhan\Documents\GitHub\SanSachCu\web1.0\web1.0\obj\Debug\web1.0.csprojResolveAssemblyReference.cache
+>>>>>>> 7906cd437e81d8cbdbe71e7785ab9b559b66ac75
