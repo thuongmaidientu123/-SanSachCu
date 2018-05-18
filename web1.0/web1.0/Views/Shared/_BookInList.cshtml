@@ -30,7 +30,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td><button class="btn-primary" type="button" onclick="location.href='@Url.Action("Index","Home")'">Đặt mua</button></td>
+                @using (Html.BeginForm("Index", "Mua",new {@Model.ma}))
+                {
+                    <td><input class="btn-primary" value="Dat Mua" type="submit" onclick="location.href='@Url.Action("Index", "Mua")'"/></td>
+                }
+               
+               
             </tr>
             @Model.ngaydang
         </table>

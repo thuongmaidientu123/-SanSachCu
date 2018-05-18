@@ -39,7 +39,7 @@ namespace web1._0.DAO
 
         public Boolean CheckLogin(string userName,string passWord)
         {
-            var a = db.TaiKhoans.Count(x => x.tendangnhap == userName && x.tendangnhap == passWord);
+            var a = db.TaiKhoans.Count(x => x.tendangnhap == userName && x.matkhau == passWord);
             if (a > 0)
             {
                 return true;

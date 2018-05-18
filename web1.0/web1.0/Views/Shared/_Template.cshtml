@@ -62,12 +62,12 @@
                     <div class="panel-heading">Danh Mục</div>
                     <div class="list-group">
 
-                        @Html.ActionLink("Sách Văn Học - Tiếu Thuyết", "", "", null, new { @class = "list-group-item" })
-                        @Html.ActionLink("Sách Thiếu Nhi", "", "", null, new { @class = "list-group-item" })
-                        @Html.ActionLink("Sách Kinh Tế", "", "", null, new { @class = "list-group-item" })
-                        @Html.ActionLink("Sách Kỹ Năng Sống", "", "", null, new { @class = "list-group-item" })
-                        @Html.ActionLink("Sách Học Ngoại Ngữ", "", "", null, new { @class = "list-group-item" })
-                        @Html.ActionLink("Sách Tham Khảo", "", "", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sách Văn Học ", "Vanhoc", "Home", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sách Hồi Kí", "HoiKi", "Home", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sách Kinh Tế", "KinhTe", "Home", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sách Văn Học Nước Ngoài", "VanHocNuocNgoai", "Home", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sách Học Tiểu Thuyết Lãng Mạn", "TieuThuyet", "Home", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Sách Tham Khảo", "ThamKhao", "Home", null, new { @class = "list-group-item" })
 
 
                     </div>
@@ -94,6 +94,26 @@
                     <div class="panel-heading">Tìm Kiếm</div>
                     <div class="panel-body">
                         <fieldset style="border:thin;color:#999;">
+                            @using (Html.BeginForm("KQTimKiem", "Home", FormMethod.Get, new { @class = "navbar-form navbar-right", role = "search", id = "search-form" }))
+                            {
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm sách" name="SearchTerm" value="@ViewBag.SearchTerm" id="search-box">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default hidden-xs"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            }
+                            @*<div id="txttimkiem">
+                                @using (Html.BeginForm("KetQuaTimKiem", "TimKiem",FormMethod.Post))
+                                {
+                                    @Html.TextBox("txttimkiem", "", htmlAttributes:new { @class="TextBoxTimKiem",@placehoder="Nhap cao tu khoa can tim"})
+                                    <br />
+                                    <button class="btn-primary" type="submit" >TimKiem</button>
+                                }
+
+
+
+                            </div>*@
                             <select>
                                 <option class="" value="volvo">Thể Thoại</option>
                                 <option value="saab">ngôn tình</option>
@@ -126,9 +146,7 @@
                             </select>
                             </br>
                             </br>
-                            <button class="btn">
-                                Tìm Kiếm
-                            </button>
+                           
                             </br>
                             </br>
                         </fieldset>

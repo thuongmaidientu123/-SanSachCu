@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -187,6 +188,13 @@
     <Content Include="Views\TaiKhoan\Index.cshtml" />
     <Content Include="Views\BanSach\Index.cshtml" />
     <Content Include="Views\TaiKhoan\CheckSession.cshtml" />
+    <Content Include="Views\Home\Vanhoc.cshtml" />
+    <Content Include="Views\Home\KinhTe.cshtml" />
+    <Content Include="Views\Home\TieuThuyet.cshtml" />
+    <Content Include="Views\Home\VanHocNuocNgoai.cshtml" />
+    <Content Include="Views\Home\HoiKi.cshtml" />
+    <Content Include="Views\Home\ThamKhao.cshtml" />
+    <Content Include="Views\Home\KQTimKiem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -198,6 +206,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\images\BaiDang\" />
     <Folder Include="Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
