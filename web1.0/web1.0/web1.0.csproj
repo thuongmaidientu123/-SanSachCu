@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -127,11 +128,13 @@
   <ItemGroup>
     <Compile Include="ActionFilters\RequireHttpsAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\BaiDangSUM.cs" />
     <Compile Include="Common\CommonConstrants.cs" />
     <Compile Include="Controllers\BanSachController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="DAO\BaiDangDAO.cs" />
     <Compile Include="DAO\SachDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,6 +147,7 @@
     <Compile Include="Models\NhaXuatBan.cs" />
     <Compile Include="Models\Sach.cs" />
     <Compile Include="Models\SanSachCu.cs" />
+    <Compile Include="Models\Storage .cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TacGia.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
@@ -161,8 +165,15 @@
     <Content Include="Views\Home\HistoryTransaction.cshtml" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <Content Include="Views\TaiKhoan\Index.cshtml" />
-    <Content Include="Views\BanSach\Index.cshtml" />
     <Content Include="Views\TaiKhoan\CheckSession.cshtml" />
+    <Content Include="Views\BanSach\Template.cshtml" />
+    <Content Include="Views\BanSach\Index.cshtml" />
+    <Content Include="Views\BanSach\Sua_BaiDang.cshtml" />
+    <Content Include="Views\BanSach\Sua33.cshtml" />
+    <Content Include="Views\BanSach\TrangSua.cshtml" />
+    <Content Include="Views\BanSach\create.cshtml" />
+    <Content Include="Views\BanSach\Add.cshtml" />
+    <Content Include="Views\BanSach\uphinh.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,6 +184,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\images\BaiDang\" />
+    <Folder Include="Assets\Image\" />
+    <Folder Include="Image\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <PropertyGroup>

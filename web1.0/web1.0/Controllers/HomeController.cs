@@ -17,9 +17,6 @@ namespace web1._0.Controllers
             var dao = new DAO.SachDAO();
             return View(dao.getListSaleBook());
         }
-
-
-
         public ActionResult BaiTap()
         {
             return View();

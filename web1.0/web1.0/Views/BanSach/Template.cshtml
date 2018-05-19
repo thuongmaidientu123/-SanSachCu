@@ -1,0 +1,49 @@
+﻿@model web1._0.Models.BaiDang
+
+@using (Html.BeginForm("Xoa", "BanSach"))
+{
+
+<div class="BookinList">
+    <div class="Image">
+        <img class="img-thumbnail" src="@Model.hinhanh" />
+    </div>
+    <div class="Info">
+        <h3>@Model.ten</h3>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <td><b>Tác giả:</b></td>
+                <td>@Model.TacGia.tentacgia</td>
+            </tr>
+            <tr>
+                <td><b>Nhà xuất bản:</b></td>
+                <td>@Model.NhaXuatBan.tennhaxuatban</td>
+            </tr>
+            <tr>
+                <td><b>Thể loại:</b></td>
+                <td>@Model.TheLoai.tenloaisach</td>
+            </tr>
+
+            <tr>
+                <td><b>Giá: </b></td>
+                <td>@Model.gia đ</td>   
+            </tr>
+
+            <tr>
+                <td><b>Miêu Tả:</b></td>
+                <td>@Model.gioithieu</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" onclick="location.href='@Url.Action("Xoa", "BanSach", Model)'">Xóa</button></td>
+                <td><button type="button" onclick="location.href='@Url.Action("TrangSua", "BanSach", Model)'">Sửa </button></td>
+            </tr>
+            @Model.ngaydang
+        </table>
+       
+    </div>
+
+
+</div>
+}
