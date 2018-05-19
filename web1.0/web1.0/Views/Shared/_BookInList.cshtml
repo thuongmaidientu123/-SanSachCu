@@ -3,9 +3,20 @@
 
 
 <div class="BookinList">
-    <div class="Image">
-        <img class="img-thumbnail" src="@Model.hinhanh" />
+    <div class="hinh">
+        <div class="container_1">
+            <img class="hinh" src="@Model.hinhanh" alt="Avarta">
+            <div class="overlay">
+                <div class="text" align="left">
+                    @Model.gioithieu
+                </div>
+            </div>
+
+        </div>
     </div>
+    <div class="overlay">
+        <p class="text">@Model.gioithieu</p>
+    </div> 
     <div class="Info">
         <h3>@Model.ten</h3>
         <br />
@@ -30,13 +41,18 @@
             </tr>
             <tr>
                 <td></td>
-                <td><button class="btn-primary" type="button" onclick="location.href='@Url.Action("Index","Home")'">Đặt mua</button></td>
+                @using (Html.BeginForm("Index", "Mua",new {@Model.ma}))
+                {
+                    <td><input class="btn-primary" value="Dat Mua" type="submit" onclick="location.href='@Url.Action("Index", "Mua")'"/></td>
+                }
+               
+               
             </tr>
             @Model.ngaydang
         </table>
-       
+
     </div>
-    
+
 
 </div>
 

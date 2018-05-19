@@ -101,11 +101,35 @@
     <Content Include="Assets\CSS\style.css" />
     <Content Include="Assets\images\IndexPage\buy.png" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\Sach\100-Cau-Chuyen.jpg" />
+    <Content Include="Assets\images\Sach\11-Loi-Khuyen.jpg" />
+    <Content Include="Assets\images\Sach\18-Quy-Luat-Bat-Bien.jpg" />
+    <Content Include="Assets\images\Sach\9-Bo-Lam-10.jpg" />
+    <Content Include="Assets\images\Sach\Ba-Ngoi-Cua-Nguoi.jpg" />
+    <Content Include="Assets\images\Sach\Cach-Suy-Nghi-Cua-Nguoi-Giau.jpg" />
+    <Content Include="Assets\images\Sach\Chuc-Mot-Ngay-Tot.jpg" />
+    <Content Include="Assets\images\Sach\Con-Duong-Lap-Nghiep.jpg" />
+    <Content Include="Assets\images\Sach\Cu-Hich.jpg" />
+    <Content Include="Assets\images\Sach\Doi-Khong-Nhu-Mo.jpg" />
     <Content Include="Assets\images\Sach\Forrest-Gump.jpg" />
+    <Content Include="Assets\images\Sach\Giai-Phap-Ban-Hang.jpg" />
+    <Content Include="Assets\images\Sach\Hanh-Trinh-Xa-Xu.jpg" />
+    <Content Include="Assets\images\Sach\Hoi-Ky-Clinton.jpg" />
     <Content Include="Assets\images\Sach\Ke-May-Man.jpg" />
+    <Content Include="Assets\images\Sach\Khi-Nao-Cuop-Nha-Bang.jpg" />
+    <Content Include="Assets\images\Sach\Khong-Bao-Gio.jpg" />
     <Content Include="Assets\images\Sach\Lich-Su-Tinh-Yeu.jpg" />
+    <Content Include="Assets\images\Sach\Man-Dam-Nhan-Sinh.jpg" />
+    <Content Include="Assets\images\Sach\Napoleon-Dai-De.jpg" />
+    <Content Include="Assets\images\Sach\Nghe-Thuat-Kaizen.jpg" />
     <Content Include="Assets\images\Sach\Nha-Gia-Kim.jpg" />
+    <Content Include="Assets\images\Sach\Nhung-Bai-Hoc-Dau-Tu.jpg" />
+    <Content Include="Assets\images\Sach\O-Day-Co-Nang.jpg" />
     <Content Include="Assets\images\Sach\Sach-Bai-Tai-123.jpg" />
+    <Content Include="Assets\images\Sach\Sieu-Doi-Ngu.jpg" />
+    <Content Include="Assets\images\Sach\Thanh-Cong-Khong-Can-Tra-Gia.jpg" />
+    <Content Include="Assets\images\Sach\Thoi-Quen-Thu-8.jpg" />
+    <Content Include="Assets\images\Sach\Tu-Duy.jpg" />
     <Content Include="Assets\images\Sach\Yeu-Tren-Tung-Ngon-Tay.jpg" />
     <Content Include="Assets\images\template\arrow-33-xxl.png" />
     <Content Include="Assets\js\popper.min.js" />
@@ -166,6 +190,7 @@
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <Content Include="Views\TaiKhoan\Index.cshtml" />
     <Content Include="Views\TaiKhoan\CheckSession.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\BanSach\Template.cshtml" />
     <Content Include="Views\BanSach\Index.cshtml" />
     <Content Include="Views\BanSach\Sua_BaiDang.cshtml" />
@@ -174,6 +199,15 @@
     <Content Include="Views\BanSach\create.cshtml" />
     <Content Include="Views\BanSach\Add.cshtml" />
     <Content Include="Views\BanSach\uphinh.cshtml" />
+=======
+    <Content Include="Views\Home\Vanhoc.cshtml" />
+    <Content Include="Views\Home\KinhTe.cshtml" />
+    <Content Include="Views\Home\TieuThuyet.cshtml" />
+    <Content Include="Views\Home\VanHocNuocNgoai.cshtml" />
+    <Content Include="Views\Home\HoiKi.cshtml" />
+    <Content Include="Views\Home\ThamKhao.cshtml" />
+    <Content Include="Views\Home\KQTimKiem.cshtml" />
+>>>>>>> 654d52de2a221b69330a6492f7a4010e6f02cc08
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,6 +221,9 @@
     <Folder Include="Assets\Image\" />
     <Folder Include="Image\" />
     <Folder Include="Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

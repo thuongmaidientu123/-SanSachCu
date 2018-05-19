@@ -2,10 +2,25 @@
 
 @if (Model == null)
 {
-    <li class="nav-item">  @Html.ActionLink("Đăng nhập", "Index", "TaiKhoan", null, new { @class = "nav-link" })</li>
-    <li class="nav-item">  @Html.ActionLink("Đăng ký", "DangKy", "TaiKhoan", null, new { @class = "nav-link" }) </li>
+    <div class="row">
+        <ul class="nav  font-weight-bold border menu">
+            <li class="nav-item">  @Html.ActionLink("Đăng nhập", "Index", "TaiKhoan", null, new { @class = "nav-link" })</li>
+            <li class="nav-item">  @Html.ActionLink("Đăng ký", "DangKy", "TaiKhoan", null, new { @class = "nav-link" }) </li>
+        </ul>
+    </div>
 }
 else
 {
-       <span>Xin chào  @Model.UserName @Html.ActionLink("Đăng xuất", "Logout", "TaiKhoan") </span>
+    <div class="row">
+        
+        <ul class="nav  font-weight-bold border menu ">
+            <li class="nav-item"> @Html.ActionLink("Đăng xuất", "Logout", "TaiKhoan", null, new { @class = "nav-link" })</li>
+            <li class="nav-item">  @Html.ActionLink("Kiểm tra đơn hàng", "DangKy", "TaiKhoan", null, new { @class = "nav-link" }) </li>
+        </ul>
+        
+    </div>
+    
+    
+
 }
+
