@@ -99,8 +99,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CSS\style.css" />
+    <Content Include="Assets\images\lienhe1.png" />
+    <Content Include="Assets\images\googleplus.PNG" />
+    <Content Include="Assets\images\iconfb.PNG" />
     <Content Include="Assets\images\IndexPage\buy.png" />
+    <Content Include="Assets\images\lienhe.png" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\logo1.PNG" />
+    <Content Include="Assets\images\logo2.png" />
     <Content Include="Assets\images\Sach\100-Cau-Chuyen.jpg" />
     <Content Include="Assets\images\Sach\11-Loi-Khuyen.jpg" />
     <Content Include="Assets\images\Sach\18-Quy-Luat-Bat-Bien.jpg" />
@@ -132,6 +138,8 @@
     <Content Include="Assets\images\Sach\Tu-Duy.jpg" />
     <Content Include="Assets\images\Sach\Yeu-Tren-Tung-Ngon-Tay.jpg" />
     <Content Include="Assets\images\template\arrow-33-xxl.png" />
+    <Content Include="Assets\images\tf.PNG" />
+    <Content Include="Assets\js\lienhe.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -156,7 +164,9 @@
     <Compile Include="Controllers\BanSachController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MuaController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="DAO\DonHangDAO.cs" />
     <Compile Include="DAO\SachDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +205,8 @@
     <Content Include="Views\Home\HoiKi.cshtml" />
     <Content Include="Views\Home\ThamKhao.cshtml" />
     <Content Include="Views\Home\KQTimKiem.cshtml" />
+    <Content Include="Views\Mua\Index.cshtml" />
+    <Content Include="Views\Mua\quanlydonhang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

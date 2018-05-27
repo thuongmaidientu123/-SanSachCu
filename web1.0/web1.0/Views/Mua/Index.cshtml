@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+@model web1._0.Models.DonHang
+
+<div class="col-lg-12">
+    <h2>Đơn hàng</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Ngày giao dự kiến</th>
+                <th>Địa chỉ giao</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img src="@Model.Sach.hinhanh" style="height:100px;width:80px;" />
+                    <p>@Model.Sach.ten</p>
+                </td>
+                <td>@Model.ngaygiao.ToString("dd-MM-yyyy")</td>
+                <td>@Model.TaiKhoan.diachi</td>
+                <td>@Model.Sach.gia</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <b>Tên người nhận hàng:</b> @Model.TaiKhoan.hoten
+
+    <hr />
+    <button class="btn btn-danger"  type="button" onclick="location.href='@Url.Action("dathang","Mua")'">Xác nhận và thanh toán</button>
+</div>
