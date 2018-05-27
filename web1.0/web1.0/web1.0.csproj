@@ -167,11 +167,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MuaController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
-<<<<<<< HEAD
     <Compile Include="DAO\DonHangDAO.cs" />
-=======
     <Compile Include="DAO\BaiDangDAO.cs" />
->>>>>>> 347d2a3d0b24c47d62f29b0a7ed8ba901549828c
     <Compile Include="DAO\SachDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,7 +200,6 @@
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <Content Include="Views\TaiKhoan\Index.cshtml" />
     <Content Include="Views\TaiKhoan\CheckSession.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\BanSach\Template.cshtml" />
     <Content Include="Views\BanSach\Index.cshtml" />
     <Content Include="Views\BanSach\Sua_BaiDang.cshtml" />
@@ -212,7 +208,6 @@
     <Content Include="Views\BanSach\create.cshtml" />
     <Content Include="Views\BanSach\Add.cshtml" />
     <Content Include="Views\BanSach\uphinh.cshtml" />
-=======
     <Content Include="Views\Home\Vanhoc.cshtml" />
     <Content Include="Views\Home\KinhTe.cshtml" />
     <Content Include="Views\Home\TieuThuyet.cshtml" />
@@ -220,12 +215,8 @@
     <Content Include="Views\Home\HoiKi.cshtml" />
     <Content Include="Views\Home\ThamKhao.cshtml" />
     <Content Include="Views\Home\KQTimKiem.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Mua\Index.cshtml" />
     <Content Include="Views\Mua\quanlydonhang.cshtml" />
-=======
->>>>>>> 654d52de2a221b69330a6492f7a4010e6f02cc08
->>>>>>> 347d2a3d0b24c47d62f29b0a7ed8ba901549828c
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

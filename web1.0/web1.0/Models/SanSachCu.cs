@@ -8,15 +8,11 @@ namespace web1._0.Models
     public partial class SanSachCu : DbContext
     {
         public SanSachCu()
-<<<<<<< HEAD
-            : base("name=SanSachCu")
-=======
-<<<<<<< HEAD
-            : base("name=SanSachCu3")
-=======
-            : base("name=SanSachCu2")
->>>>>>> 654d52de2a221b69330a6492f7a4010e6f02cc08
->>>>>>> 347d2a3d0b24c47d62f29b0a7ed8ba901549828c
+
+            : base("name=Nhan")
+
+            
+
         {
         }
 
