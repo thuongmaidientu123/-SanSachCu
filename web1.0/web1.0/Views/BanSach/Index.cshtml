@@ -3,6 +3,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Template.cshtml";
 }
+<td><button type="button" onclick="location.href='@Url.Action("create", "BanSach")'">Tạo Bài Đăng </button></td>
+@model IEnumerable<web1._0.Models.BaiDang>
 
-<h2>BanSach</h2>
 
+@foreach (var a in Model)
+{
+    @Html.Partial("Template", a)
+}
