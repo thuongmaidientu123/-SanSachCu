@@ -1,0 +1,61 @@
+﻿@model web1._0.Models.TheLoai_Gia
+<div class="panel panel-info">
+
+    <div class="panel-heading">Tìm Kiếm</div>
+    <div class="panel-body">
+        <fieldset style="border:thin;color:#999;">
+            @using (Html.BeginForm("KQTimKiem", "Home", FormMethod.Get, new { @class = "navbar-form navbar-right", role = "search", id = "search-form" }))
+            {
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sách" name="SearchTerm" value="@ViewBag.SearchTerm" id="search-box">
+                </div>
+                    <div class="form-group">
+                        <a href="~/Views/Shared/_Template.cshtml"></a>
+                        <button type="submit" class="btn btn-default hidden-xs"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+            }
+
+                <div class="form-group">
+                    <p>Tìm kiếm theo danh mục</p>
+                </div>
+                <div class="form-group">
+                  <label for="sel1">Select list:</label>
+                  <select class="form-control" id="sel1" name="selected">
+                 <option>Tìm theo sách</option>
+                 <option>Tìm theo bài đăng</option>
+
+                 </select>
+                </div>
+                <br />
+                <br />
+                <form>
+                    <tr>
+                        <td>
+                            <b>Tác Giả:</b>
+                        </td>
+                        <td>
+                            @Html.DropDownList("Listtacgia", new SelectList(Model.lsttacgia))
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Thể Loại:</b>
+                        </td>
+                        <td>
+                            @Html.DropDownList("Listtheloai", new SelectList(Model.lsttheloai))
+                        </td>
+                    </tr>
+          
+                </form>
+
+                   
+</fieldset>
+
+
+    </div>
+
+
+</div>
+

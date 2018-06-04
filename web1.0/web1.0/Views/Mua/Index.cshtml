@@ -34,5 +34,19 @@
     <b>Tên người nhận hàng:</b> @Model.TaiKhoan.hoten
 
     <hr />
-    <button class="btn btn-danger"  type="button" onclick="location.href='@Url.Action("dathang","Mua")'">Xác nhận và thanh toán</button>
+    <button class="btn btn-danger"  type="button" onclick="location.href='@Url.Action()'">Xác nhận và thanh toán</button>
+   
+    <form action="https://www.baokim.vn/payment/product/version11" method="get">
+    <input type="hidden" name="business" value="vinhit213@gmail.com">
+    <input type="hidden" name="product_name" value="@Model.Sach.ten">
+    <input type="hidden" name="product_price" value="@Model.Sach.gia">
+    <input type="hidden" name="product_quantity" value="1">
+    <input type="hidden" name="total_amount" value="@Model.Sach.gia">
+    <input type="hidden" name="url_detail" value="http://sansachcu.tk">
+    <input type="hidden" name="url_success" value="http://localhost:5820/ThanhToan/Index">
+    <input type="hidden" name="url_cancel" value="http://zing.vn">
+    <input type="hidden" name="order_description" value="@Model.Sach.ten">
+    <input type="hidden" name="id" value="">
+    <input type="image" src="https://www.baokim.vn/cdn/x_developer/module/baokim_btn/thanhtoan-l.png" border="0" name="submit" alt="Thanh toán an toàn với Bảo Kim !" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></form>
+   
 </div>

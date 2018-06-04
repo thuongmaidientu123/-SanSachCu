@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -167,6 +170,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MuaController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\ThanhToanController.cs" />
     <Compile Include="DAO\DonHangDAO.cs" />
     <Compile Include="DAO\BaiDangDAO.cs" />
     <Compile Include="DAO\SachDAO.cs" />
@@ -177,6 +181,7 @@
     <Compile Include="Models\BaiDang.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Models\Hoa_Don.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NhaXuatBan.cs" />
     <Compile Include="Models\Sach.cs" />
@@ -186,7 +191,14 @@
     <Compile Include="Models\TacGia.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TheLoai.cs" />
+    <Compile Include="Models\TheLoai_Gia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Mua\bill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -216,7 +228,9 @@
     <Content Include="Views\Home\ThamKhao.cshtml" />
     <Content Include="Views\Home\KQTimKiem.cshtml" />
     <Content Include="Views\Mua\Index.cshtml" />
-    <Content Include="Views\Mua\quanlydonhang.cshtml" />
+    <Content Include="Views\ThanhToan\Index.cshtml" />
+    <Content Include="Views\Mua\kiemtradonhang.cshtml" />
+    <Content Include="Views\Shared\TimKiem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,6 +247,15 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Mua\bill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>bill.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

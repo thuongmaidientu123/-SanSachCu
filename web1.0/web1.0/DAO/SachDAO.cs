@@ -64,6 +64,22 @@ namespace web1._0.DAO
             }           
             return books;
         }
+        
+         public IEnumerable<BaiDang> TimBD(string searchTerm)
+        {
+            IEnumerable<BaiDang> bdang = from baidang in db.BaiDangs where baidang.tinhtrang == false select baidang;
+
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                bdang = db.BaiDangs.Where(b => b.ten.Contains(searchTerm));
+            } 
+            else
+            {
+                bdang = from baidang in db.BaiDangs select baidang;
+            }           
+            return bdang;
+        }
+             
         public void SaledBook(int masach)
         {
 
@@ -94,6 +110,7 @@ namespace web1._0.DAO
 
 
         }
+     
 
 
     }
