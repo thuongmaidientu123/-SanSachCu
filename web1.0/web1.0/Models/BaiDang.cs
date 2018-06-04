@@ -7,6 +7,7 @@ namespace web1._0.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.Drawing;
+    using System.Linq;
     using System.Web;
 
     [Table("BaiDang")]
@@ -66,10 +67,47 @@ namespace web1._0.Models
             IEnumerable<NhaXuatBan> listTG = BaiDangSUM.getlistNXB();
             return listTG;
         }
+        public IEnumerable<string> getListTGstring()
+        {
+            IEnumerable<TacGia> listTG = BaiDangSUM.getListTC();
+            List<string> listTGstring = new List<string>() ;
+            foreach (TacGia tg in listTG)
+            {
+                listTGstring.Add(tg.tentacgia);
+            }
+          
+            return listTGstring.AsEnumerable();
+        }
+        public IEnumerable<string> getListNXBstring()
+        {
+            IEnumerable<NhaXuatBan> listNXB = BaiDangSUM.getlistNXB();
+            List<string> listNXBstring = new List<string>();
+            foreach (NhaXuatBan tg in listNXB)
+            {
+                listNXBstring.Add(tg.tennhaxuatban);
+            }
+
+            return listNXBstring.AsEnumerable();
+        }
+        public IEnumerable<string> getListTheLoaistring()
+        {
+            IEnumerable<TheLoai> listTheLoai = BaiDangSUM.getTheLoai();
+            List<string> listTheLoaistring = new List<string>();
+            foreach (TheLoai tg in listTheLoai)
+            {
+                listTheLoaistring.Add(tg.tenloaisach);
+            }
+
+            return listTheLoaistring.AsEnumerable();
+        }
         public IEnumerable<TheLoai> getListTheLoai()
         {
             IEnumerable<TheLoai> listTG = BaiDangSUM.getTheLoai();
             return listTG;
+        }
+        public void setTG(TacGia sex)
+        {
+            this.TacGia = sex;
         }
     }
 }

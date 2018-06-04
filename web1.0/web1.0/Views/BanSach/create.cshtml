@@ -3,14 +3,50 @@
 @{
     ViewBag.Title = "create";
     Layout = "~/Views/Shared/_Template.cshtml";
-}
+    <script>
+        function run() {
+            var elt = document.getElementById("cbbTacGia");
+            if (document.getElementById("cbbTacGia").options[elt.selectedIndex].text != "--Chọn hoặc nhập vào --")
+                document.getElementById("txtTacGia").value = document.getElementById("cbbTacGia").options[elt.selectedIndex].text;
+            if (document.getElementById("cbbNXB").options[document.getElementById("cbbNXB").selectedIndex].text != "--Chọn hoặc nhập vào --")
+                document.getElementById("txtNXB").value = document.getElementById("cbbNXB").options[document.getElementById("cbbNXB").selectedIndex].text;
+            if (document.getElementById("cbbTheLoai").options[document.getElementById("cbbTheLoai").selectedIndex].text != "--Chọn hoặc nhập vào --")
+                document.getElementById("txtTheLoai").value = document.getElementById("cbbTheLoai").options[document.getElementById("cbbTheLoai").selectedIndex].text;
+        }
+        $(function () {
+            $('#form_author').ajaxForm({
+                beforeSubmit: ShowRequest,
+                success: SubmitSuccesful,
+                error: AjaxError
+            });
+        });
 
+        function ShowRequest(formData, jqForm, options) {
+            $(".loading_container img").show();
+        }
+
+        function AjaxError() {
+            alert("An AJAX error occured.");
+        }
+
+        function SubmitSuccesful(result, statusText) {
+            // Veritabanı işlemleri başarılı ise Index sayfasına
+            // geri dön, değilse partial-view sayfasını yenile
+            if (result.url) {
+                window.location.href = result.url;
+            } else {
+                $(".authors_content_container").html(result);
+            }
+        }
+    </script>
+}
 <h2>Tạo Bài Đăng</h2>
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm("UploadH", "BanSach", FormMethod.Post, new { id = "form_author", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -21,7 +57,8 @@
                 @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <h5>Hinh Anh</h5>
+        <input type="file" name="file" id="file" />
         <div class="form-group">
             <h5>Giới thiệu sách </h5>
             <div class="col-md-10">
@@ -47,46 +84,73 @@
             </div>
         </div>
 
-    <form>
-        <tr>
-            <td>
-                <b>Tác Giả:</b>
-            </td>
-            <td>
-                @Html.DropDownListFor((model => Model.matacgia), new SelectList(Model.getListTacGia(), "ma", "tentacgia"))
-                @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-        <br />
-        <tr>
-            <td>
-                <b>Nhà Xuất Bản:</b>
-            </td>
-            <td>
-                @Html.DropDownListFor((model => Model.manxb), new SelectList(Model.getListNXB(), "ma", "tennhaxuatban"))
-                @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-        <br />
-        <tr>
-            <td>
-                <b>Thể Loại:</b>
-            </td>
-            <td>
-                @Html.DropDownListFor((model => Model.matheloai), new SelectList(Model.getListTheLoai(), "ma", "tenloaisach"))
-                @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-            </td>
-        </tr>
+        <form>
+            <tr>
+                <td>
+                    <b>Tác Giả:</b>
+                </td>
+                <td>
+                    <div class="data-list-input" style="width:190px;">
+                        <select onchange="run()" id="cbbTacGia" style="width:175px;padding:4px 6px;border-width:1px;margin:0; height: 15px;">
+                            <option value="">--Chọn hoặc nhập vào --</option>
+                            @foreach (var a in Model.getListTGstring())
+                            {
+                            <option value=@a> @a </option>
+                            }
+                        </select>
+                        <input class="data-list-input" style="width:160px;padding:4px 6px;border-width:1px;margin:0;" type="text" name="Tacgia" required="required" id="txtTacGia" value="">
+                    </div>
+                </td>
+            </tr>
+            <br />
 
-        <input type="submit" value="OK" />
-        </form>  
-            </div>
-            <div class="form-group">
-        </div>
+            <tr>
+                <td>
+                    <b>Nhà Xuất Bản</b>
+                </td>
+                <td>
+                    <div class="data-list-input" style="width:190px;">
+                        <select onchange="run()" id="cbbNXB" style="width:175px;padding:4px 6px;border-width:1px;margin:0; height: 15px;">
+                            <option value="">--Chọn hoặc nhập vào --</option>
+                            @foreach (var a in Model.getListNXBstring())
+                            {
+                            <option value=@a> @a </option>
+                            }
+                        </select>
+                        <input class="data-list-input" style="width:160px;padding:4px 6px;border-width:1px;margin:0;" type="text" name="NXB" required="required" id="txtNXB" value="">
+                    </div>
+                </td>
+            </tr>
+            <br />
+            <tr>
+                <td>
+                    <b>Thể Loại</b>
+                </td>
+                <td>
+                    <div class="data-list-input" style="width:190px;">
+                        <select onchange="run()" id="cbbTheLoai" style="width:175px;padding:4px 6px;border-width:1px;margin:0; height: 15px;">
+                            <option value="">--Chọn hoặc nhập vào --</option>
+                            @foreach (var a in Model.getListTheLoaistring())
+                            {
+                            <option value=@a> @a </option>
+                            }
+                        </select>
+                        <input class="data-list-input" style="width:160px;padding:4px 6px;border-width:1px;margin:0;" type="text" name="TheLoai" required="required" id="txtTheLoai">
+                    </div>
+                </td>
+            </tr>
+            <input type="submit" value="OK" />
+        </form>
+
+    </div>
+    <div class="form-group">
+    </div>
 }
-<h2>Hình ảnh</h2>
-@using (Html.BeginForm("uphinh", "BanSach", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+@*<h2>Hình ảnh</h2>
+    @using (Html.BeginForm("uphinh", "BanSach", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @using (Html.BeginForm("_AddAuthor", "Authors", FormMethod.Post, new { id = "form_author", enctype = "multipart/form-data" }))
+        {
             <label for="file">Upload Image:</label>
             <input type="file" name="file" id="file" />
             <br>
@@ -95,4 +159,7 @@
             <br>
             <br>
             @ViewBag.Message
-}
+        }*@
+
+
+@*<img id="myUploadedImg" alt="Photo" style="width:180px;" />*@

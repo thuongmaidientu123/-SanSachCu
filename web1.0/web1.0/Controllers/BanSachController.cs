@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using web1._0.Common;
 using web1._0.DAO;
 using web1._0.Models;
@@ -13,11 +14,12 @@ namespace web1._0.Controllers
 {
     public class BanSachController : BaseController
     {
-        public static string img = null;
+        public static string img_edit = null;
+        public static BaiDang bd_edit = new BaiDang();
         // GET: BanSach
         public ActionResult Index()
         {
-            
+
             UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
             if (a != null)
             {
@@ -27,6 +29,7 @@ namespace web1._0.Controllers
 
             return View();
         }
+
         public ActionResult Xoa(BaiDang bd)
         {
 
@@ -38,66 +41,224 @@ namespace web1._0.Controllers
         {
             var dao = new DAO.BaiDangDAO();
             BaiDang bdsua = dao.SuaBaiDang(bd);
-            return View("TrangSua", bdsua);
+            UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
+            //Response.Write("<script type=\"text/javascript\">alert('Tạo Bài đăng thành công !!! ');</script>");
+            return View("TrangSua",bd);
         }
 
         public ActionResult TrangSua(BaiDang bd)
         {
-        if(img!=null)
-        {
-             bd.hinhanh = img;
-        }
-       
+            if (bd != null)
+                bd_edit = bd;
+            if (img_edit != null)
+            {
+                bd.hinhanh = img_edit;
+            }
+
             convert(bd);
-            img = null;
+            img_edit = null;
             return View(bd);
         }
+
         public ActionResult create(BaiDang bd)
         {
             UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
+            //bd_create = bd;
             var BDsum = new BaiDangDAO();
-            bd.hinhanh = img;
             BaiDang bd_temp = new BaiDang();
             bd.mataikhoan = a.ID;
             bd_temp.ten = null;
+            string TacGia = Request.Form["TacGia"];
+            string NXB = Request.Form["NXB"];
+            string tenTheLoai = Request.Form["TheLoai"];
             if (BDsum.insertBaiDang(bd))
             {
-                img = null;
-                 return View("Index", BDsum.getListBaiDang(a.ID));
-                //bd_temp = null;
-                //return View("create", bd_temp);
+                Response.Write("<script type=\"text/javascript\">alert('Tạo Bài đăng thành công !!! ');</script>");
+                return View("create", bd_temp);
             }
             else
             {
-                img = null;
+                // img_create = null;
                 return View("create", bd_temp);
             }
         }
-        [HttpPost]
-        public ActionResult uphinh(HttpPostedFileBase file)
-        {
-            if (file != null && file.ContentLength > 0)
-                try
-                {
-                    string path = Path.Combine(Server.MapPath("~/Image"),
-                                               Path.GetFileName(file.FileName));
-                    file.SaveAs(path);
-                    string s= "/Image/" + Path.GetFileName(file.FileName);
 
-                    ViewBag.Message = "Upload hình ảnh thành công";
-                    img = s;
-                }
-                catch (Exception ex)
+               [HttpPost]
+        public ActionResult UploadH(BaiDang viewModel, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string path = Path.Combine(Server.MapPath("~/Image"),
+                                             Path.GetFileName(file.FileName));
+                file.SaveAs(path);
+                string s = "/Image/" + Path.GetFileName(file.FileName);
+                viewModel.hinhanh = s;
+            }
+            UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
+            var BDsum = new BaiDangDAO();
+            viewModel.mataikhoan = a.ID;
+            string TacGia = Request.Form["TacGia"];
+            string NXB = Request.Form["NXB"];
+            string tenTheLoai = Request.Form["TheLoai"];
+            if (TacGia != null)
+            {
+                TacGia tempTG = new TacGia();
+                tempTG = BDsum.getTacGiabyTen(TacGia);
+                if (tempTG != null)
+                    viewModel.setTG(tempTG);
+                else
                 {
-                    ViewBag.Message = "Lỗi:" + ex.Message.ToString();
+                    if (BDsum.insertTacGia(TacGia))
+                    {
+                        tempTG = BDsum.getTacGiabyTen(TacGia);
+                        viewModel.setTG(tempTG);
+                    }
+                    else
+                        Response.Write("<script type=\"text/javascript\">alert('Insert tác giả không thành công!!! ');</script>");
                 }
+
+
+            }
+            if (NXB != null)
+            {
+                NhaXuatBan tempTG = new NhaXuatBan();
+                tempTG = BDsum.getNXBbyTen(NXB);
+                if (tempTG != null)
+                    viewModel.NhaXuatBan = tempTG;
+                else
+                {
+                    if (BDsum.insertNXB(NXB))
+                    {
+                        tempTG = BDsum.getNXBbyTen(NXB);
+                        viewModel.NhaXuatBan = tempTG;
+                    }
+                    else
+                        Response.Write("<script type=\"text/javascript\">alert('Insert NXB không thành công!!! ');</script>");
+                }
+
+
+            }
+            if (tenTheLoai != null)
+            {
+                TheLoai tempTG = new TheLoai();
+                tempTG = BDsum.getTheloaibyTen(tenTheLoai);
+                if (tempTG != null)
+                    viewModel.TheLoai = tempTG;
+                else
+                {
+                    if (BDsum.insertTheLoai(tenTheLoai))
+                    {
+                        tempTG = BDsum.getTheloaibyTen(tenTheLoai);
+                        viewModel.TheLoai = tempTG;
+                    }
+                    else
+                        Response.Write("<script type=\"text/javascript\">alert('Insert TheLoai không thành công!!! ');</script>");
+                }
+
+
+            }
+            if (BDsum.insertBaiDang(viewModel))
+            {
+
+                Response.Write("<script type=\"text/javascript\">alert('Tạo Bài đăng thành công !!! ');</script>");
+                return View("Index", BDsum.getListBaiDang(a.ID));
+            }
             else
             {
-                ViewBag.Message = "Hình ảnh không được chọn";
+                Response.Write("<script type=\"text/javascript\">alert('Tạo Bài đăng ko thành công !!! ');</script>");
+
+                return View("create", viewModel);
             }
-            return View();
         }
 
-    }
 
+        [HttpPost]
+        public ActionResult UploadH2(BaiDang viewModel, HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string path = Path.Combine(Server.MapPath("~/Image"),
+                                             Path.GetFileName(file.FileName));
+                file.SaveAs(path);
+                string s = "/Image/" + Path.GetFileName(file.FileName);
+                viewModel.hinhanh = s;
+            }
+            UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
+            var BDsum = new BaiDangDAO();
+            viewModel.mataikhoan = a.ID;
+            string TacGia = Request.Form["TacGia"];
+            string NXB = Request.Form["NXB"];
+            string tenTheLoai = Request.Form["TheLoai"];
+            if (TacGia != null)
+            {
+                TacGia tempTG = new TacGia();
+                tempTG = BDsum.getTacGiabyTen(TacGia);
+                if (tempTG != null)
+                    viewModel.setTG(tempTG);
+                else
+                {
+                    if (BDsum.insertTacGia(TacGia))
+                    {
+                        tempTG = BDsum.getTacGiabyTen(TacGia);
+                        viewModel.setTG(tempTG);
+                    }
+                    else
+                        Response.Write("<script type=\"text/javascript\">alert('Insert tác giả không thành công!!! ');</script>");
+                }
+
+
+            }
+            if (NXB != null)
+            {
+                NhaXuatBan tempTG = new NhaXuatBan();
+                tempTG = BDsum.getNXBbyTen(NXB);
+                if (tempTG != null)
+                    viewModel.NhaXuatBan = tempTG;
+                else
+                {
+                    if (BDsum.insertNXB(NXB))
+                    {
+                        tempTG = BDsum.getNXBbyTen(NXB);
+                        viewModel.NhaXuatBan = tempTG;
+                    }
+                    else
+                        Response.Write("<script type=\"text/javascript\">alert('Insert NXB không thành công!!! ');</script>");
+                }
+
+
+            }
+            if (tenTheLoai != null)
+            {
+                TheLoai tempTG = new TheLoai();
+                tempTG = BDsum.getTheloaibyTen(tenTheLoai);
+                if (tempTG != null)
+                    viewModel.TheLoai = tempTG;
+                else
+                {
+                    if (BDsum.insertTheLoai(tenTheLoai))
+                    {
+                        tempTG = BDsum.getTheloaibyTen(tenTheLoai);
+                        viewModel.TheLoai = tempTG;
+                    }
+                    else
+                        Response.Write("<script type=\"text/javascript\">alert('Insert TheLoai không thành công!!! ');</script>");
+                }
+
+
+            }
+            convert(viewModel);
+            if (BDsum.insertBaiDang(viewModel))
+            {
+
+                Response.Write("<script type=\"text/javascript\">alert('Save Bài đăng thành công !!! ');</script>");
+                return View("Index", BDsum.getListBaiDang(a.ID));
+            }
+            else
+            {
+                Response.Write("<script type=\"text/javascript\">alert('Save Bài đăng ko thành công !!! ');</script>");
+
+                return View("create", viewModel);
+            }
+        }
+    }
 }
