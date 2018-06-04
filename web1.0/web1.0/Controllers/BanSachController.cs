@@ -41,22 +41,19 @@ namespace web1._0.Controllers
         {
             var dao = new DAO.BaiDangDAO();
             BaiDang bdsua = dao.SuaBaiDang(bd);
-            UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
-            //Response.Write("<script type=\"text/javascript\">alert('Tạo Bài đăng thành công !!! ');</script>");
             return View("TrangSua",bd);
         }
 
         public ActionResult TrangSua(BaiDang bd)
         {
-            if (bd != null)
-                bd_edit = bd;
-            if (img_edit != null)
-            {
-                bd.hinhanh = img_edit;
-            }
+            //if (bd != null)
+            //    bd_edit = bd;
+            //if (img_edit != null)
+            //{
+            //    bd.hinhanh = img_edit;
+            //}
 
             convert(bd);
-            img_edit = null;
             return View(bd);
         }
 
@@ -185,80 +182,9 @@ namespace web1._0.Controllers
             }
             UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
             var BDsum = new BaiDangDAO();
-            viewModel.mataikhoan = a.ID;
-            string TacGia = Request.Form["TacGia"];
-            string NXB = Request.Form["NXB"];
-            string tenTheLoai = Request.Form["TheLoai"];
-            if (TacGia != null)
-            {
-                TacGia tempTG = new TacGia();
-                tempTG = BDsum.getTacGiabyTen(TacGia);
-                if (tempTG != null)
-                    viewModel.setTG(tempTG);
-                else
-                {
-                    if (BDsum.insertTacGia(TacGia))
-                    {
-                        tempTG = BDsum.getTacGiabyTen(TacGia);
-                        viewModel.setTG(tempTG);
-                    }
-                    else
-                        Response.Write("<script type=\"text/javascript\">alert('Insert tác giả không thành công!!! ');</script>");
-                }
-
-
-            }
-            if (NXB != null)
-            {
-                NhaXuatBan tempTG = new NhaXuatBan();
-                tempTG = BDsum.getNXBbyTen(NXB);
-                if (tempTG != null)
-                    viewModel.NhaXuatBan = tempTG;
-                else
-                {
-                    if (BDsum.insertNXB(NXB))
-                    {
-                        tempTG = BDsum.getNXBbyTen(NXB);
-                        viewModel.NhaXuatBan = tempTG;
-                    }
-                    else
-                        Response.Write("<script type=\"text/javascript\">alert('Insert NXB không thành công!!! ');</script>");
-                }
-
-
-            }
-            if (tenTheLoai != null)
-            {
-                TheLoai tempTG = new TheLoai();
-                tempTG = BDsum.getTheloaibyTen(tenTheLoai);
-                if (tempTG != null)
-                    viewModel.TheLoai = tempTG;
-                else
-                {
-                    if (BDsum.insertTheLoai(tenTheLoai))
-                    {
-                        tempTG = BDsum.getTheloaibyTen(tenTheLoai);
-                        viewModel.TheLoai = tempTG;
-                    }
-                    else
-                        Response.Write("<script type=\"text/javascript\">alert('Insert TheLoai không thành công!!! ');</script>");
-                }
-
-
-            }
+            viewModel.mataikhoan = a.ID; 
             convert(viewModel);
-            if (BDsum.insertBaiDang(viewModel))
-            {
-
-                Response.Write("<script type=\"text/javascript\">alert('Save Bài đăng thành công !!! ');</script>");
-                return View("Index", BDsum.getListBaiDang(a.ID));
-            }
-            else
-            {
-                Response.Write("<script type=\"text/javascript\">alert('Save Bài đăng ko thành công !!! ');</script>");
-
-                return View("create", viewModel);
+            return View("TrangSua",viewModel);
             }
         }
     }
-}

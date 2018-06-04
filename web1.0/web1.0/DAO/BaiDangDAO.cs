@@ -27,6 +27,7 @@ namespace web1._0.DAO
         public bool insertBaiDang(BaiDang bd)
         {
 
+            
             Boolean temp = true;
             if (bd.ten==null)
             {
@@ -39,6 +40,7 @@ namespace web1._0.DAO
             try
             {
                 db.SaveChanges();
+                db.SaveChangesAsync();
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -48,7 +50,87 @@ namespace web1._0.DAO
 
             return temp;
     }
-    public BaiDang getbaidang()
+        public bool insertTacGia(string tenTG)
+        {
+            Boolean temp = true;
+            TacGia TG = new TacGia();
+            TG.tentacgia = tenTG;
+            db.TacGias.Add(TG);
+
+            try
+            {
+                db.SaveChanges();
+                db.SaveChangesAsync();
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                temp = false;
+            }
+
+            return temp;
+        }
+        public bool insertNXB(string tenTG)
+        {
+            Boolean temp = true;
+            NhaXuatBan TG = new NhaXuatBan();
+            TG.tennhaxuatban = tenTG;
+            db.NhaXuatBans.Add(TG);
+
+            try
+            {
+                db.SaveChanges();
+                db.SaveChangesAsync();
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                temp = false;
+            }
+
+            return temp;
+        }
+        public bool insertTheLoai(string tenTG)
+        {
+            Boolean temp = true;
+            TheLoai TG = new TheLoai();
+            TG.tenloaisach = tenTG;
+            db.TheLoais.Add(TG);
+
+            try
+            {
+                db.SaveChanges();
+                db.SaveChangesAsync();
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                temp = false;
+            }
+
+            return temp;
+        }
+        public TacGia getTacGia(int bd)
+        {
+            return (TacGia)(from tg in db.TacGias where tg.ma == bd select tg);
+        }
+
+        public TacGia getTacGiabyTen(string bd)
+        {
+            //return (TacGia)(from tg in db.TacGias where tg.tentacgia == bd select tg);
+            return (TacGia)db.TacGias.Where(p => p.tentacgia.Equals(bd)).SingleOrDefault();
+        }
+        public NhaXuatBan getNXBbyTen(string bd)
+        {
+            //return (TacGia)(from tg in db.TacGias where tg.tentacgia == bd select tg);
+            return (NhaXuatBan)db.NhaXuatBans.Where(p => p.tennhaxuatban.Equals(bd)).SingleOrDefault();
+        }
+        public TheLoai getTheloaibyTen(string bd)
+        {
+            //return (TacGia)(from tg in db.TacGias where tg.tentacgia == bd select tg);
+            return (TheLoai)db.TheLoais.Where(p => p.tenloaisach.Equals(bd)).SingleOrDefault();
+        }
+        public BaiDang getbaidang()
     {
             return (BaiDang)(from tg in db.BaiDangs where tg.ma != 0 select tg);
     }
@@ -67,9 +149,10 @@ namespace web1._0.DAO
             BaiDang_old.ten = Db_New.ten;
             BaiDang_old.TacGia = Db_New.TacGia;
             BaiDang_old.matacgia = Db_New.matacgia;
+            BaiDang_old.manxb = Db_New.manxb;
             BaiDang_old.trangthai = Db_New.trangthai;
             BaiDang_old.gia = Db_New.gia;
-            BaiDang_old.TheLoai = Db_New.TheLoai;
+            BaiDang_old.matheloai = Db_New.matheloai;
             if(Db_New.hinhanh!=null)
             {
                 BaiDang_old.hinhanh = Db_New.hinhanh;
@@ -80,15 +163,10 @@ namespace web1._0.DAO
             return BaiDang_old;
         }
 
-        public IEnumerable<String> getListTacGia()
+        public IEnumerable<TacGia> getListTacGia()
         {
-            IEnumerable<String> listNameTG = from tg in db.TacGias select tg.tentacgia;
-            return listNameTG;
-        }
-        public IEnumerable<String> getListTheLoai()
-        {
-            IEnumerable<String> listTL = from tl in db.TheLoais select tl.tenloaisach;
-            return listTL;
+            IEnumerable<TacGia> listTG = from tg in db.TacGias select tg;
+            return listTG;
         }
     }
 }

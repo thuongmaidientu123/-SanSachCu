@@ -4,57 +4,81 @@
     ViewBag.Title = "TrangSu22a";
     Layout = "~/Views/Shared/_Template.cshtml";
 }
+<script>
+        $(function () {
+            $('#form_author').ajaxForm({
+                beforeSubmit: ShowRequest,
+                success: SubmitSuccesful,
+                error: AjaxError
+            });
+        });
 
+        function ShowRequest(formData, jqForm, options) {
+            $(".loading_container img").show();
+        }
+
+        function AjaxError() {
+            alert("An AJAX error occured.");
+        }
+
+        function SubmitSuccesful(result, statusText) {
+            // Veritabanı işlemleri başarılı ise Index sayfasına
+            // geri dön, değilse partial-view sayfasını yenile
+            if (result.url) {
+                window.location.href = result.url;
+            } else {
+                $(".authors_content_container").html(result);
+            }
+        }
+</script>
 <h2>Trang Sửa</h2>
-@Html.Partial("uphinh2")
-
 @using (Html.BeginForm("UploadH2", "BanSach", FormMethod.Post, new { id = "form_author", enctype = "multipart/form-data" }))
 
 {
-@Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ma)
-            <tr>
-                <td>
-                    <b>Tên Sách:</b>
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
-                    <td>
-</tr>
-            <tr>
-                <td>
-                    <b>Giới Thiệu:</b>
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.gioithieu, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.gioithieu, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <b>Trạng Thái:</b>
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.trangthai, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <b>Tên Sách:</b>
+            </td>
+            <td>
+                @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
+            <td>
+        </tr>
+        <tr>
+            <td>
+                <b>Giới Thiệu:</b>
+            </td>
+            <td>
+                @Html.EditorFor(model => model.gioithieu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.gioithieu, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Trạng Thái:</b>
+            </td>
+            <td>
+                @Html.EditorFor(model => model.trangthai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
+            </td>
+        </tr>
 
-            <tr>
-                <td>
-                    <b>Giá: </b>
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.gia, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.gia, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <br />
+        <tr>
+            <td>
+                <b>Giá: </b>
+            </td>
+            <td>
+                @Html.EditorFor(model => model.gia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.gia, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <br />
         <tr>
             <td>
                 <b>Tác Giả:</b>
@@ -84,10 +108,11 @@
                 @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
             </td>
         </tr>
-                <h5>Hinh Anh</h5>
-                <input type="file" name="file" id="file" />
-                <input type="submit" value="OK" />
-      
+        <h5>Hinh Anh</h5>
+        <input type="file" name="file" id="file" />
+        <br />
+        <input type="submit" value="OK" />
+
 
     </div>
 }
