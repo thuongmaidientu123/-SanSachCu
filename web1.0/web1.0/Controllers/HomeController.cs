@@ -90,8 +90,8 @@ namespace web1._0.Controllers
         {
             var dao = new DAO.BaiDangDAO();
             TheLoai_Gia tlg = new TheLoai_Gia();
-            tlg.lsttacgia = dao.getListTacGia();
-            tlg.lsttheloai = dao.getListTheLoai();
+            //tlg.lsttacgia = dao.getListTacGia();
+            //tlg.lsttheloai = dao.getListTheLoai();
             return PartialView(tlg);
         }
 

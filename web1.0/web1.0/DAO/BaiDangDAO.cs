@@ -87,15 +87,10 @@ namespace web1._0.DAO
             return BaiDang_old;
         }
 
-        public IEnumerable<String> getListTacGia()
+        public IEnumerable<TacGia> getListTacGia()
         {
-            IEnumerable<String> listNameTG = from tg in db.TacGias select tg.tentacgia;
-            return listNameTG;
-        }
-        public IEnumerable<String> getListTheLoai()
-        {
-            IEnumerable<String> listTL = from tl in db.TheLoais select tl.tenloaisach;
-            return listTL;
+            IEnumerable<TacGia> listTG = from tg in db.TacGias select tg;
+            return listTG;
         }
 
     }
