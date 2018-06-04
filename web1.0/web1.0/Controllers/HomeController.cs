@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using web1._0.DAO;
 using web1._0.Common;
 using web1._0.Models;
+using System.Web.UI.WebControls;
 
 namespace web1._0.Controllers
 {
@@ -78,14 +79,21 @@ namespace web1._0.Controllers
         }
 
         public ActionResult KQTimKiem(string searchTerm)
-        {
-            var dao = new DAO.SachDAO();
-            int n = dao.Tim(searchTerm).Count();
-            ViewBag.NumberBookShow = n;            
-            ViewBag.SearchTerm = searchTerm;
-            return View(dao.Tim(searchTerm));
+        {               
+                var dao = new DAO.SachDAO();                  
+                int n = dao.Tim(searchTerm).Count();
+                ViewBag.NumberBookShow = n;
+                ViewBag.SearchTerm = searchTerm;              
+                return View(dao.Tim(searchTerm));
         }
-
+        public PartialViewResult TimKiem()
+        {
+            var dao = new DAO.BaiDangDAO();
+            TheLoai_Gia tlg = new TheLoai_Gia();
+            tlg.lsttacgia = dao.getListTacGia();
+            tlg.lsttheloai = dao.getListTheLoai();
+            return PartialView(tlg);
+        }
 
        
 

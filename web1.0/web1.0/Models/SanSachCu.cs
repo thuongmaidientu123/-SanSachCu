@@ -9,7 +9,7 @@ namespace web1._0.Models
     {
         public SanSachCu()
 
-            : base("name=Nhan")
+            : base("name=Long")
 
             
 
