@@ -1,0 +1,59 @@
+﻿
+@model web1._0.Models.BaiDang
+
+
+
+<div class="BookinList">
+    <div class="hinh">
+        <div class="container_1">
+            <img class="hinh" src="@Model.hinhanh" alt="Avarta">
+            <div class="overlay">
+                <div class="text" align="left">
+                    @Model.gioithieu
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="overlay">
+        <p class="text">@Model.gioithieu</p>
+    </div>
+    <div class="Info">
+        <h3>@Model.ten</h3>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <td><b>Tác giả:</b></td>
+                <td>@Model.TacGia.tentacgia</td>
+            </tr>
+            <tr>
+                <td><b>Gioi Thieu:</b></td>
+                <td>@Model.gioithieu</td>
+            </tr>
+            <tr>
+                <td><b>Nhà xuất bản:</b></td>
+                <td>@Model.NhaXuatBan.tennhaxuatban</td>
+            </tr>
+            <tr>
+                <td><b>Thể loại:</b></td>
+                <td>@Model.TheLoai.tenloaisach</td>
+            </tr>
+
+            <tr>
+                <td><b>Giá: </b></td>
+                <td>@Model.gia đ</td>
+            </tr>
+            <tr>
+                <td><b>Ngay Dang: </b></td>
+                <td>@Model.ngaydang đ</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+</div>
+
+
+

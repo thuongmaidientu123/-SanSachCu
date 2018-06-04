@@ -134,6 +134,13 @@ namespace web1._0.DAO
     {
             return (BaiDang)(from tg in db.BaiDangs where tg.ma != 0 select tg);
     }
+        public IEnumerable<BaiDang> getListBd(ref int total,int PageIndex=1, int PageSezie=2)
+        {
+            total = db.BaiDangs.Count();
+            IEnumerable<BaiDang> listBd = db.BaiDangs.OrderByDescending(x=>x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
+           // IEnumerable<BaiDang> listBd = from book in db.BaiDangs where book.tinhtrang == false orderby book.ngaydang select book;
+            return listBd;
+        }
         public int XoaDonHang(int ma)
         {
             BaiDang BaiDang_del= db.BaiDangs.Where(p=>p.ma.Equals(ma)).SingleOrDefault();
@@ -168,5 +175,6 @@ namespace web1._0.DAO
             IEnumerable<TacGia> listTG = from tg in db.TacGias select tg;
             return listTG;
         }
+
     }
 }
