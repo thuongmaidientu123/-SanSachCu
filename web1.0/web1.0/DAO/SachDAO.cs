@@ -20,14 +20,16 @@ namespace web1._0.DAO
             IEnumerable<Sach> listSach = from book in db.Saches where book.tinhtrang == true orderby book.ngaydang select book ;
             return listSach;
         }
-        public IEnumerable<Sach> getListSaleBook()
+        public IEnumerable<Sach> getListSaleBook(ref int total, int PageIndex = 1, int PageSezie = 2)
         {
-            IEnumerable<Sach> listSach = from book in db.Saches where book.tinhtrang == false orderby book.ngaydang select book;
-            return listSach;
-        }
-        public IEnumerable<Sach> getForeignLiteratureBooks()
+            total = db.Saches.Count();
+            IEnumerable<Sach> listSach = db.Saches.OrderByDescending(x => x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
+            return listSach;          
+    }
+        public IEnumerable<Sach> getForeignLiteratureBooks(ref int total, int PageIndex = 1, int PageSezie = 2)
         {
-            IEnumerable<Sach> listsach = from book in db.Saches where book.matheloai == 1 && book.tinhtrang == false orderby book.ngaydang select book;
+            total = db.Saches.Where(x => x.matheloai == 1).Count();
+            IEnumerable<Sach> listsach = db.Saches.Where(x => x.matheloai == 1).OrderByDescending(x => x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
             return listsach;
         }
         public IEnumerable<Sach> getLiteratureBooks()
@@ -35,19 +37,23 @@ namespace web1._0.DAO
             IEnumerable<Sach> listsach = from book in db.Saches where book.matheloai == 2 && book.tinhtrang == false orderby book.ngaydang select book;
             return listsach;
         }
-        public IEnumerable<Sach> getEconomicBooks()
+        public IEnumerable<Sach> getEconomicBooks(ref int total, int PageIndex = 1, int PageSezie = 2)
         {
-            IEnumerable<Sach> listsach = from book in db.Saches where book.matheloai == 3 && book.tinhtrang == false orderby book.ngaydang select book;
+            total = db.Saches.Where(x=>x.matheloai==3).Count();
+            IEnumerable<Sach> listsach = db.Saches.Where(x=>x.matheloai==3).OrderByDescending(x => x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
+            return listsach;
+    }
+        public IEnumerable<Sach> getRomanceNovelBooks(ref int total, int PageIndex = 1, int PageSezie = 2)
+        {
+            total = db.Saches.Where(x => x.matheloai == 4).Count();
+            IEnumerable<Sach> listsach = db.Saches.Where(x => x.matheloai == 4).OrderByDescending(x => x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
             return listsach;
         }
-        public IEnumerable<Sach> getRomanceNovelBooks()
+        public IEnumerable<Sach> getMemoirBooks(ref int total, int PageIndex = 1, int PageSezie = 2)
         {
-            IEnumerable<Sach> listsach = from book in db.Saches where book.matheloai == 4 && book.tinhtrang == false orderby book.ngaydang select book;
-            return listsach;
-        }
-        public IEnumerable<Sach> getMemoirBooks()
-        {
-            IEnumerable<Sach> listsach = from book in db.Saches where book.matheloai == 5 && book.tinhtrang == false orderby book.ngaydang select book;
+
+            total = db.Saches.Where(x => x.matheloai == 5).Count();
+            IEnumerable<Sach> listsach = db.Saches.Where(x => x.matheloai == 5).OrderByDescending(x => x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
             return listsach;
         }
         public IEnumerable<Sach> Tim(string searchTerm)

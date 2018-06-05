@@ -19,9 +19,15 @@ namespace web1._0.DAO
             donhang = donh;
         }
 
-        public IEnumerable<BaiDang> getListBaiDang(int ma)
+        public IEnumerable<BaiDang> getListBaiDang(int ma, ref int total, int PageIndex = 1, int PageSezie = 2)
         {
-            IEnumerable<BaiDang> listBD = from bd in db.BaiDangs where bd.mataikhoan == ma select bd;
+            total = db.BaiDangs.Where(x => x.mataikhoan == ma).Count();
+            IEnumerable<BaiDang> listBD = db.BaiDangs.Where(x => x.mataikhoan == ma).OrderByDescending(x => x.giodang).Skip((PageIndex - 1) * PageSezie).Take(PageSezie).ToList();
+            return listBD;
+        }
+        public IEnumerable<BaiDang> getListBaiDang2(int ma)
+        {
+            IEnumerable<BaiDang> listBD = from bd in db.BaiDangs where bd.mataikhoan == ma orderby bd.ngaydang select bd ;
             return listBD;
         }
         public bool insertBaiDang(BaiDang bd)

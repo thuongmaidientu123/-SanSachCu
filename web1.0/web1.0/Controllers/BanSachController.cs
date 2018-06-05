@@ -17,14 +17,27 @@ namespace web1._0.Controllers
         public static string img_edit = null;
         public static BaiDang bd_edit = new BaiDang();
         // GET: BanSach
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int PageSize = 3)
         {
 
             UserLogin a = (UserLogin)Session[CommonConstrants.USER_SESSION];
             if (a != null)
             {
                 var dao = new DAO.BaiDangDAO();
-                return View(dao.getListBaiDang(a.ID));
+                int totalRecord = 0;
+                var model = dao.getListBaiDang(a.ID,ref totalRecord, page, PageSize);
+                ViewBag.total = totalRecord;
+                ViewBag.Page = page;
+                int maxPage = 3;
+                int totalPage = 0;
+                totalPage = (int)Math.Ceiling((double)(totalRecord / PageSize)) + 1;
+                ViewBag.totalPage = totalPage;
+                ViewBag.Maxpage = maxPage;
+                ViewBag.First = 1;
+                ViewBag.Last = totalPage;
+                ViewBag.Next = page + 1;
+                ViewBag.Prev = page - 1;
+                return View(model);
             }
 
             return View();
@@ -35,7 +48,7 @@ namespace web1._0.Controllers
 
             var dao = new DAO.BaiDangDAO();
             int ID = dao.XoaDonHang(bd.ma);
-            return View("Index", dao.getListBaiDang(ID));
+            return View("Index", dao.getListBaiDang2(ID));
         }
         public ActionResult convert(BaiDang bd)
         {
@@ -158,7 +171,8 @@ namespace web1._0.Controllers
             {
 
                 Response.Write("<script type=\"text/javascript\">alert('Tạo Bài đăng thành công !!! ');</script>");
-                return View("Index", BDsum.getListBaiDang(a.ID));
+       
+                return View("Index", BDsum.getListBaiDang2(a.ID));
             }
             else
             {

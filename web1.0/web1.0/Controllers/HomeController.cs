@@ -13,11 +13,24 @@ namespace web1._0.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int PageSize = 3)
         {
-            ViewBag.NumberBookShow = 3;
             var dao = new DAO.SachDAO();
-            return View(dao.getListSaleBook());
+            int totalRecord = 0;
+            var model = dao.getListSaleBook(ref totalRecord, page, PageSize);
+            ViewBag.total = totalRecord;
+            ViewBag.Page = page;
+            int maxPage = 3;
+            int totalPage = 0;
+            totalPage = (int)Math.Ceiling((double)(totalRecord / PageSize)) + 1;
+            ViewBag.totalPage = totalPage;
+            ViewBag.Maxpage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
+            
+            return View(model);
         }
         public ActionResult BaiTap()
         {
@@ -45,33 +58,77 @@ namespace web1._0.Controllers
             ViewBag.NumberBookShow = n;
             return View(dao.getLiteratureBooks());
         }
-        public ActionResult KinhTe()
+        public ActionResult KinhTe(int page = 1, int PageSize = 3)
         {
             var dao = new DAO.SachDAO();
-            int n = dao.getEconomicBooks().Count();
-            ViewBag.NumberBookShow = n;
-            return View(dao.getEconomicBooks());
+            int totalRecord = 0;
+            var model = dao.getEconomicBooks(ref totalRecord, page, PageSize);
+            ViewBag.total = totalRecord;
+            ViewBag.Page = page;
+            int maxPage = 3;
+            int totalPage = 0;
+            totalPage = (int)Math.Ceiling((double)(totalRecord / PageSize)) + 1;
+            ViewBag.totalPage = totalPage;
+            ViewBag.Maxpage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
+            return View(model);
         }
-        public ActionResult TieuThuyet()
+        public ActionResult TieuThuyet(int page = 1, int PageSize = 3)
         {
             var dao = new DAO.SachDAO();
-            int n = dao.getRomanceNovelBooks().Count();
-            ViewBag.NumberBookShow = n;
-            return View(dao.getRomanceNovelBooks());
+            int totalRecord = 0;
+            var model = dao.getRomanceNovelBooks(ref totalRecord, page, PageSize);
+            ViewBag.total = totalRecord;
+            ViewBag.Page = page;
+            int maxPage = 3;
+            int totalPage = 0;
+            totalPage = (int)Math.Ceiling((double)(totalRecord / PageSize)) + 1;
+            ViewBag.totalPage = totalPage;
+            ViewBag.Maxpage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
+            return View(model);
         }
-        public ActionResult VanHocNuocNgoai()
+        public ActionResult VanHocNuocNgoai(int page = 1, int PageSize = 3)
         {
             var dao = new DAO.SachDAO();
-            int n = dao.getForeignLiteratureBooks().Count();
-            ViewBag.NumberBookShow = n;
-            return View(dao.getForeignLiteratureBooks());
+            int totalRecord = 0;
+            var model = dao.getForeignLiteratureBooks(ref totalRecord, page, PageSize);
+            ViewBag.total = totalRecord;
+            ViewBag.Page = page;
+            int maxPage = 3;
+            int totalPage = 0;
+            totalPage = (int)Math.Ceiling((double)(totalRecord / PageSize)) + 1;
+            ViewBag.totalPage = totalPage;
+            ViewBag.Maxpage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
+            return View(model);
         }
-        public ActionResult HoiKi()
+        public ActionResult HoiKi(int page = 1, int PageSize = 3)
         {
             var dao = new DAO.SachDAO();
-            int n = dao.getMemoirBooks().Count();
-            ViewBag.NumberBookShow = n;           
-            return View(dao.getMemoirBooks());
+            int totalRecord = 0;
+            var model = dao.getMemoirBooks(ref totalRecord, page, PageSize);
+            ViewBag.total = totalRecord;
+            ViewBag.Page = page;
+            int maxPage = 3;
+            int totalPage = 0;
+            totalPage = (int)Math.Ceiling((double)(totalRecord / PageSize)) + 1;
+            ViewBag.totalPage = totalPage;
+            ViewBag.Maxpage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
+            return View(model);
         }
         public ActionResult ThamKhao()
         {
