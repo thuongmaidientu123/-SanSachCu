@@ -34,7 +34,7 @@
     <b>Tên người nhận hàng:</b> @Model.TaiKhoan.hoten
 
     <hr />
-    <button class="btn btn-danger"  type="button" onclick="location.href='@Url.Action()'">Xác nhận và thanh toán</button>
+    <button class="btn btn-danger"  type="button" onclick="location.href='@Url.Action("dathang","Mua")'">Xác nhận và thanh toán</button>
    
     <form action="https://www.baokim.vn/payment/product/version11" method="get">
     <input type="hidden" name="business" value="vinhit213@gmail.com">

@@ -52,7 +52,14 @@ namespace web1._0.Controllers
 
             dao1.SaledBook(donhang.masach);
 
-            return View();
+            TaiKhoan tk = null;
+            UserLogin user = (UserLogin)Session[Common.CommonConstrants.USER_SESSION];
+            if (user != null)
+            {
+                tk = db.TaiKhoans.SingleOrDefault(x => x.ma == user.ID ? true : false);
+            }
+
+            return View("kiemtradonhang", getdonhang(tk));
         }
         public ActionResult kiemtradonhang()
         {
